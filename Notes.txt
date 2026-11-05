@@ -1,0 +1,187 @@
+Database Management System(DBMS)
+---------------------------------
+Data:-Data is the raw element for processing
+
+Information:-Processed data is called information(Meaningfull data)
+
+Database:-Is the area where the data/information are going to store
+
+DBMS(Database Management System):-The software that is used for managing
+				data/information.
+
+DBMS Server:- 
+-------------------------------------------
+Types of DBMS
+
+	->RDBMS(Relational DBMS):Proposed By:Edgar Codd
+
+		Relations/Tables:- Data are stored in tabular form
+
+		Table consists of rows/tuples and columns/fields
+
+Architecture of RDBMS
+
+->External Schema/Layer
+	(Programmers/End users)
+
+->Conceptual Schema/Layer
+	DBA(Database Admin/Architect)
+		DBO(Database Objects)
+		->User
+		->Database
+		->Tables
+		->Views
+		->Procedures
+		->Functions
+		->Triggers
+		->Events
+		->Cursor
+		->Prepared Statements
+
+
+->Internal Schema/Layer
+	(Storage Algorithm)
+
+SQL(Structured Query Language)
+-------------------------------
+The language used to communicate with RDBMS
+
+There are four category of SQL Statements
+
+->Data Definition Language(DDL)
+	It is used for meta data deifnition(defining the DBO)
+	->create:-For creating a new DBO
+	->drop:- For removing an existing DBO
+	->alter:-For changing the structure of a DBO
+	->rename:-For renaming the DBO
+	->truncate:-It is working on tables/ which will remove all data from
+			table and reset the index.
+
+->Data Manipulation Language(DML)
+	Used for performing data related operations
+	->insert:- Used for inserting new records in table
+	->select:-Used for selecting the existing records from table
+	->update:-Used for chaging the existing records in table
+	->delete:-Used for removing the data from table
+
+->Data Controlling Language(DCL)	
+	used for implementing security
+	->grant:- Is used for setting permissions
+	->revoke:- For resetting permissions
+
+->Transaction Controlling Language(TCL)
+	Used for implementing batch operations
+	->commit
+	->rollback
+----------------------------------------------------------
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	->Network DBMS
+	->Graph DBMS
+	->Document DBMS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
