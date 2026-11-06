@@ -75,6 +75,44 @@ There are four category of SQL Statements
 	->rollback
 ----------------------------------------------------------
 
+https://github.com/sivaprasad2848/dbms_study.git
+
+
+MySQL
+	show databases;
+	use <database-name>;
+
+PostGres
+	\l
+	\c <database-name>;
+
+Creating a new database
+
+	Syntax:
+		create database <db-name>;
+	Eg:
+		create database db1001;
+
+Ref Link:https://www3.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Beginner.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
