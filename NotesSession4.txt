@@ -130,6 +130,36 @@ price decimal(10,5) not null,category varchar(100) not null,stock int default 0,
 author_id int,foreign key(author_id) references author(auth_id));
 
 
+INSERT INTO book (title, price, category, stock, author_id)
+VALUES
+('Python Programming', 450.00, 'Programming', 25, 1),
+('Learning Java', 550.00, 'Programming', 20, 2),
+('Web Development with HTML', 350.00, 'Web Development', 30, 3),
+('Mastering CSS', 400.00, 'Web Development', 15, 4),
+('JavaScript Basics', 500.00, 'Programming', 18, 5),
+('Advanced Python', 650.00, 'Programming', 12, 6),
+
+('Database Management', 600.00, 'Database', 20, 1),
+('SQL for Beginners', 300.00, 'Database', 35, 2),
+('PostgreSQL Guide', 550.00, 'Database', 16, 3),
+('MySQL Essentials', 450.00, 'Database', 22, 4),
+
+('Machine Learning Basics', 750.00, 'Artificial Intelligence', 10, 5),
+('Deep Learning with Python', 850.00, 'Artificial Intelligence', 8, 6),
+('Introduction to AI', 700.00, 'Artificial Intelligence', 14, 1),
+
+('Computer Networks', 500.00, 'Networking', 20, 2),
+('Operating Systems', 600.00, 'Computer Science', 18, 3),
+('Data Structures', 450.00, 'Computer Science', 25, 4),
+
+('Django Web Development', 550.00, 'Web Development', 15, 5),
+('React for Beginners', 650.00, 'Web Development', 12, 6),
+('Cloud Computing', 800.00, 'Cloud Computing', 10, 1),
+('DevOps Engineering', 900.00, 'DevOps', 7, 2);
+
+
+
+
 mySQL
 ------
 create table book(slno int auto_increment primary key,title varchar(100) not null,
@@ -157,6 +187,14 @@ author_pen_name
 author_email
 author_mobile
 
+INSERT INTO author (auth_name, auth_pen_name, author_email, author_mobile)
+VALUES
+('Arun Kumar', 'AK Writer', 'arun@gmail.com', 9876543210),
+('Priya Nair', 'P Nair', 'priya@gmail.com', 9876543211),
+('Rahul Menon', 'R Menon', 'rahul@gmail.com', 9876543212),
+('Anjali Thomas', 'Anju Writes', 'anjali@gmail.com', 9876543213),
+('Vishnu Raj', 'VR Author', 'vishnu@gmail.com', 9876543214),
+('Meera Krishnan', 'Meera K', 'meera@gmail.com', 9876543215);
 
 
 
