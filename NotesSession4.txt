@@ -116,6 +116,34 @@ varchar(100) default 'no-email',mobile bigint not null);
 
 		Split the table and keep the relationship using PK and FK
 
+We are going to store  book details in a table
+
+TableName:book
+booktitle
+price
+category
+stock
+author_id(FK) references author(auth_id)
+
+create table book(slno serial primary key,title varchar(100) not null,
+price decimal(10,5) not null,category varchar(100) not null,stock int default 0,
+author_id int,foreign key(author_id) references author(auth_id));
+
+create table author(auth_id serial primary key,auth_name varchar(100) not null,
+auth_pen_name varchar(100) not null,author_email varchar(100) not null,
+author_mobile bigint);
+
+
+TaleName:Author
+auth_id (PK)
+author_name
+author_pen_name
+author_email
+author_mobile
+
+
+
+
 
 
 
