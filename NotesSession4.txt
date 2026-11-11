@@ -1,0 +1,436 @@
+User
+-------------
+Is used for implemeting security
+
+How to create user dbo in Postgres
+-----------------------------------
+
+create user <user-name> with password 'password';
+Eg:
+create user batman with password 'asd123#';
+
+For Listing all user with in server
+
+	\du
+For removing a user from postgre
+
+drop user username;
+
+-------------------------
+For mysql
+
+Syntax:
+	create user 'user-name'@'machine-name/ip' identified by 'password';
+
+	
+	machine-name/ip: 
+			localhost:- 
+			ip:- 
+			%-
+
+	Eg:
+	create user 'batman'@'localhost' identified by 'asd123#';
+
+
+
+drop user 'username'@'machine-name/ip';
+-------------------------------------------------
+Database:- 
+	How to create a database
+
+	Syntax:
+
+	create database <db-name>;
+	
+	\l:- For listing all database from postgre sql
+	\c:-  for connecting to a db postgre sql
+
+	show databases:- For listing all database(mysql)
+	use <db-name>:- Fr selecting a database for work(mysql)
+------------------------------------------------------------------
+Relations/Tables:-They are used for storing the data.
+
+Syntax:
+	create table <table-name>(<field-name> <datatype> [spec],
+	<field-name> <datatype> [spec],...)
+	
+Eg:
+	create table contact(slno int,name varchar(100),email varchar(100),
+	mobile bigint);
+
+	\d:- Used for listing all tables with in postgres db
+	show tables:- Used for listing all tables with in mysql db
+
+Datatypes: Type of data
+
+	->Numeric Type
+		bit
+		tinyint
+		smallint
+		int
+		bigint
+		float	
+		double
+		decimal
+
+	->String/Text Type
+		char(size)
+		varchar(size)
+		tinytext
+		text
+		mediumtext
+		blob(binary large object-mysql)
+
+	->Date Type
+		date(Y-m-d)/yyyy-mm-dd
+		date(h:i:s)/hh:ii:ss
+		datetime
+		timestamp
+
+	->User Defined
+		set
+		enum
+--------------------------------------------------
+There are set of rules for creating tables
+
+Normalization Rules
+---------------------------------------------------
+->First Normal Form(1NF)
+
+	1)No Empty Field 
+			not null/default
+	2)Atomicity
+			address
+			housename,post,place,pin
+	3)Key Column	
+			It uniquely identify the records
+
+			primary key/unique key
+
+create table contacts(slno int unique,name varchar(100) not null,email 
+varchar(100) default 'no-email',mobile bigint not null);
+
+->Second Normal Form(2NF)
+	->Table must be in 1NF
+	->Avoid Partial Dependency
+
+		Split the table and keep the relationship using PK and FK
+
+
+
+
+
+
+
+DML Commands
+------------------------
+
+	->insert
+		We can insert data to a table using insert 
+
+	Syntax:
+	insert into <table-name>(<field-name1>,<field-name2>,..)
+	values('value1','value2',....);
+
+	Eg:
+	insert into contacts(slno,name,email,mobile) values(1,'sam',
+	'sam@gmail.com',87384787);
+
+INSERT INTO contacts (slno, name, email, mobile) VALUES
+(2, 'John', 'john@gmail.com', 98765432),
+(3, 'David', 'david@gmail.com', 87654321),
+(4, 'Alex', 'alex@gmail.com', 91234567),
+(5, 'Rahul', 'rahul@gmail.com', 99887766),
+(6, 'Arun', 'arun@gmail.com', 88776655),
+(7, 'Vijay', 'vijay@gmail.com', 88990011),
+(8, 'Anil', 'anil@gmail.com', 98761234),
+(9, 'Peter', 'peter@gmail.com', 87651234),
+(10, 'Ravi', 'ravi@gmail.com', 91234567),
+(11, 'Manu', 'manu@gmail.com', 98765431),
+(12, 'Kevin', 'kevin@gmail.com', 87654320),
+(13, 'Amal', 'amal@gmail.com', 99887755),
+(14, 'Nikhil', 'nikhil@gmail.com', 88776644),
+(15, 'Ajay', 'ajay@gmail.com', 88990022),
+(16, 'Arjun', 'arjun@gmail.com', 98761235),
+(17, 'Thomas', 'thomas@gmail.com', 87651235),
+(18, 'George', 'george@gmail.com', 91234568),
+(19, 'Manoj', 'manoj@gmail.com', 98765430),
+(20, 'Suresh', 'suresh@gmail.com', 87654322);
+
+
+	->select
+	Syntax:
+
+	select <field1>,<field2>,... from <table-name>;
+
+	Eg:
+
+	select 	 from contacts;
+
+	*:- Which is used to select all fields
+
+Field/Column Alias:- used for changing the selected filed name in display
+
+	select name as customer_name,email as customer_email from contacts;
+
+limiting the records in selection
+
+	select *from contacts limit 5;
+
+order by:
+	Used for sorting
+
+select *from contacts order by slno;
+select *from contacts order by slno desc;
+
+where clause:-Used for spefiying the condition
+	Operators in where clause
+
+	1)relational operator(=,<,>,<=,>=,!=)
+
+	select *from contacts where slno>10;
+	select *from contacts where slno=10;
+	
+	2)logical operator( and ,or ,not)
+
+	select *from contacts where slno>=5 and slno<=10;
+
+
+	3)between
+	select *from contacts where slno between 10 and 15;
+
+	4)like
+	:- Used for checking the patterns
+	select *from contacts where name like "%Manu%";
+	select *from contacts where name like "M%";
+
+	5)in:- Used for speciying a group
+
+	select *from contacts where slno in(1,2,3);
+
+	6)Subquery
+	
+	select *from contacts where slno in(select slno from contacts where
+	slno <10);
+
+	7)group by
+
+CREATE TABLE products (
+    product_id SERIAL PRIMARY KEY,
+    product_name VARCHAR(100),
+    category VARCHAR(50),
+    brand VARCHAR(50),
+    price DECIMAL(10,2),
+    quantity INT
+);
+
+
+INSERT INTO products
+(product_name, category, brand, price, quantity)
+VALUES
+('Laptop', 'Electronics', 'HP', 55000, 10),
+('Mouse', 'Electronics', 'Dell', 800, 50),
+('Keyboard', 'Electronics', 'Logitech', 1500, 30),
+('Monitor', 'Electronics', 'Samsung', 12000, 15),
+('Mobile', 'Electronics', 'Samsung', 25000, 20),
+('Headphones', 'Electronics', 'Sony', 2500, 25),
+('T-Shirt', 'Clothing', 'Puma', 1200, 40),
+('Jeans', 'Clothing', 'Levis', 2500, 20),
+('Shirt', 'Clothing', 'Peter England', 1800, 30),
+('Shoes', 'Footwear', 'Nike', 4500, 15),
+('Sandals', 'Footwear', 'Bata', 900, 35),
+('Sports Shoes', 'Footwear', 'Adidas', 5000, 10),
+('Rice', 'Groceries', 'India Gate', 1200, 50),
+('Sugar', 'Groceries', 'Madhur', 50, 100),
+('Oil', 'Groceries', 'Fortune', 180, 60),
+('Soap', 'Personal Care', 'Dove', 60, 80),
+('Shampoo', 'Personal Care', 'Clinic Plus', 180, 45),
+('Toothpaste', 'Personal Care', 'Colgate', 100, 70),
+('Tablet', 'Electronics', 'Samsung', 18000, 12),
+('Jacket', 'Clothing', 'Puma', 3500, 15);
+
+
+select category,count(*) as c from products group by category; 
+		
+
+	having:- If you want to set a condition after filter you can use having
+
+SELECT category, COUNT(*) AS c FROM products GROUP BY category HAVING category = 'Electronics';
+
+SELECT category, COUNT(*) AS c FROM products where category = 'Electronics' GROUP BY category ;
+
+select category,count(*) as c from products group by category order by c; 
+
+Aggregate Functions
+--------------------
+->count()
+->sum()
+->max()
+select product_id from products where price in(select max(price) from products);
+->min()
+->avg()
+
+select category,sum(price) from products group by category having category='Electronics';
+
+	->update
+	Syntax:
+	update <table-name> set <fieldname>=<value>,.... where <condition>;
+	eg:
+	update products set price=1400.00 where product_id=13;
+
+	->delete
+
+	Syntax:
+
+	delete from <table-name> where <condition>;
+
+---------------------------------------------------------
+Altering Table Strcuture
+--------------------------------------------------------
+Adding new column to a table
+
+	alter table <table-name> add <column-name> <datatype>;
+	Eg:
+	alter table products add stock int;
+	
+Removing a column from table
+	alter table <table-name> drop <column-name>;
+	EG:
+	alter table products drop stock;
+
+Changing the column-name or datatype
+	alter table <table-name> rename <column-name> to <new-column-name>;
+
+	Eg:
+	alter table products rename quantity to qty;
+
+	For changing datatype in postgres 
+
+	alter table <table-name> alter column <column-name> type <datatype>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
