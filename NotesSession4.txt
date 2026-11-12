@@ -390,6 +390,34 @@ Changing the column-name or datatype
 
 	alter table <table-name> alter column <column-name> type <datatype>;
 
+---------------------------------------------------
+Self Join
+----------------------------------------------
+create table employee(emp_id serial primary key,emp_name varchar(100) not null,
+tl_id int);
+
+INSERT INTO employee (emp_name, tl_id) VALUES
+('Arun', NULL),
+('Rahul', 1),
+('Meera', 1),
+('Anjali', 1),
+('Vishnu', 2),
+('Sneha', 2),
+('Kiran', 2),
+('Akhil', 3),
+('Divya', 3),
+('Nikhil', 3);
+
+select a.emp_name as Team_Leader,b.emp_name as  Employee_name from employee as a
+inner join employee as b on a.emp_id=b.tl_id;
+
+
+
+
+
+
+
+
 
 
 
