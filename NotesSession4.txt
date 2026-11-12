@@ -424,6 +424,40 @@ Syntax:
 Eg:
 create view v11 as select auth_id,auth_name,auth_pen_name from author;
 ------------------------------------------------
+Trigger
+
+They are used for implementing to track table related changes.
+
+------------------------------------------------
+Function/Procedure
+------------------------------------------------
+They are used for implementing business logic.
+
+Syntax:
+
+	create function <function-name>(args)
+	returns <datatype>
+	AS $$
+	begin
+	//function body
+	end
+	$$
+	language plpgsql; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
