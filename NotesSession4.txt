@@ -410,6 +410,28 @@ INSERT INTO employee (emp_name, tl_id) VALUES
 
 select a.emp_name as Team_Leader,b.emp_name as  Employee_name from employee as a
 inner join employee as b on a.emp_id=b.tl_id;
+-----------------------------------------------
+Views
+----------------------------------------------
+Views are used for implementing two main purpose
+
+	->Security(We can not delete,update,insert in views)
+	->Selecting data into a single point from multiple tables.
+
+Syntax:
+	create view <view-name> as [select stmt];
+
+Eg:
+create view v11 as select auth_id,auth_name,auth_pen_name from author;
+------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
