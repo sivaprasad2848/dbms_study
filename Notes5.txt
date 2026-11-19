@@ -80,6 +80,35 @@ execute stmt;
 deallocate prepare stmt;
 end
 
+Cursor
+-------------------------------------------------------
+Cursor are used for visiting all records selected with in a procedure
+or function based on condition.
+
+CREATE OR REPLACE PROCEDURE display_students()
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    cur_student CURSOR FOR
+        SELECT sid, name FROM student;
+
+    rec RECORD;
+BEGIN
+    OPEN cur_student;
+
+    LOOP
+        FETCH cur_student INTO rec;
+        EXIT WHEN NOT FOUND;
+
+        RAISE NOTICE '%, %', rec.sid, rec.name;
+    END LOOP;
+
+    CLOSE cur_student;
+END;
+$$;
+
+
+
 
 
 
