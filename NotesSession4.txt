@@ -443,6 +443,36 @@ Syntax:
 	end
 	$$
 	language plpgsql; 
+Eg:
+
+	create function add_num123(a int,b int)
+	returns int
+	as $$
+	declare 
+	res int;
+	begin
+	res := a + b;
+	return res;		
+	end	
+	$$
+	language plpgsql
+
+create function create_author(an varchar(100),pn varchar(100),ae varchar(100),am bigint)
+returns int
+as $$
+begin
+insert into author(auth_name,auth_pen_name,author_email,author_mobile)
+values(an,pn,ae,am);
+return 0;
+end	
+$$
+language plpgsql
+select create_author('Khalid Hussain','Khalid Hussain','hussain@gmail.com',11223344);
+
+
+
+
+
 
 
 

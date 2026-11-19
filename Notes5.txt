@@ -1,0 +1,33 @@
+Stored Procedures
+----------------------
+Used for implementing business logic
+
+MySQL
+----------------------
+Syntax:
+
+create procedure <procedure-name>(IN/OUT/INOUT <arg-name> <datatype>,...)
+begin
+//procedure code
+end
+
+PostgreSQL Syntax
+------------------
+create procedure <procedure-name>()
+language plpgsql as $$
+begin
+statement;
+end;
+$$
+
+Eg:
+create procedure insert_contact(n varchar(100),e varchar(100),m int)
+language plpgsql as $$
+begin
+insert into contact(name,email,mobile) values(n,e,m);
+end;
+$$
+
+
+
+
