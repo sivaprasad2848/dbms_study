@@ -27,6 +27,63 @@ begin
 insert into contact(name,email,mobile) values(n,e,m);
 end;
 $$
+Events
+---------------------------
+Events are used for tracking time based operations.
+
+Need to check event scheduler is on or off
+
+show processlist;
+
+
+Setting event scheduler to ON state.
+
+set global event_scheduler=on;
+
+Syntax for creating events
+-------------------------------------
+create event <event-name> ON schedule AT timestamp
+do
+our operation
+
+Eg:
+create event ev_dynamic_insert ON schedule AT CURRENT_TIMESTAMP + INTERVAL 
+1 MINUTE
+do
+call  pr1('Kiran','Kiran@gmail.com',837487);
+
+------------------------------------------------------
+Prepared Statements
+--------------------------------------------------------
+They are used to perform DDL operations in function/procedures
+
+
+CREATE PROCEDURE cr_table()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    EXECUTE 'CREATE TABLE employee_data(
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100),
+        salary DECIMAL(10,2)
+    )';
+END;
+$$;
+-----------------------------------------
+MySQL
+---------------------------------------
+create procedure cr_table123()
+begin
+set @qry="CREATE TABLE employee_data(id int auto_increment PRIMARY KEY,name VARCHAR(100),salary DECIMAL(10,2))";
+prepare stmt from @qry;
+execute stmt;
+deallocate prepare stmt;
+end
+
+
+
+
+
 
 
 
